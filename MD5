@@ -1,0 +1,17 @@
+4b526baa6cff95bcc0d2c35e700d7119 *DESCRIPTION
+b188334595c273d10c951841087693c5 *NAMESPACE
+6b2910e27fbc5ffa89a6774e69c34cb0 *NEWS
+705f7c6541801e306c1a7041f01c35eb *R/Forest.R
+6a7272391fabaa0538138f45c9154e63 *R/SROC_rjags.R
+6aa005de706ea1e3ea2b40811aaaeba2 *data/Anti_CCP.rda
+39778fb56f75705f4e724f1366f12efc *data/Xpert.rda
+1a70d1f7efa4b812d5012984c9be3ef5 *data/posterior_samples_Bivariate.rda
+7067d4abbfdd38395b4e2fc3a3d44b8a *data/posterior_samples_HSROC.rda
+dd2c392e324774e2210432533237a2e4 *data/posterior_samples_LC.rda
+99d44810bfe6f7557b35592d8f103722 *man/Anti_CCP.Rd
+679fa074e8e2314569b49872e3e0f78d *man/Forest.Rd
+57c2061c54666821277a00b694c72a53 *man/SROC_rjags.Rd
+38ef3646b9b76d29bf72dc5a32f1e2d7 *man/Xpert.Rd
+16c2e6efc23aaa516a1af6a84228452f *man/posterior_samples_Bivariate.Rd
+5bc5b9b7a94500589c3954c40fe2ca93 *man/posterior_samples_HSROC.Rd
+937e30164338b48693bcdffbdb1ca949 *man/posterior_samples_LC.Rd

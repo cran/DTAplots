@@ -1,0 +1,53 @@
+		#===================================================
+		#
+		#		2021-03-11 (Version 1.02.4 published)
+		#
+		#===================================================
+--- Fixed a bug that caused the prediction region to appear narrower than it should have been
+
+		#===================================================
+		#
+		#		2021-01-05 (Version 1.02.2 not published)
+		#
+		#===================================================
+--- Added arguments to control the range of the x- and y-axis
+--- Added argument for the creation of summary points
+--- Fixed issues and implemented suggestions of CRAN team from previous sumbission
+--- Added output from Bayesian bivariate model as a data in order to provide
+    a running example for function SROC_jags
+--- Added dataset in order to provide a running example for function Forest
+--- Removed SROC_BUGS function
+
+
+		#===================================================
+		#
+		#		2020-06-02 (Version 1.02 not published)
+		#
+		#===================================================
+
+--- Added new features to SROC_rjags, consisting mainly on new arguments to the function to enable more control.
+    Also fixed a small bug in SROC_rjags function
+
+		#===================================================
+		#
+		#		2019-09-17 (Version 1.01 not published)
+		#
+		#===================================================
+
+--- Added SROC_BUGS function to create summary/SROC plots from BUGS coda output
+
+
+		#===================================================
+		#
+		#		2019-07-31 (version 1.0 not published)
+		#
+		#===================================================
+
+--- Initial release including the Forest and SROC_rjags functions
+
+
+
+
+
+
+

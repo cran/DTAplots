@@ -1,0 +1,5 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("grDevices", "rgb", "dev.off", "jpeg")
+importFrom("graphics", "axis", "lines", "plot", "points", "symbols", "par", "text")
+importFrom("stats", "cor", "median", "qchisq", "quantile", "sd", "qnorm")
+importFrom("utils", "read.table")
