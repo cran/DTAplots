@@ -15,8 +15,8 @@ SROC_rjags <-function (X, n, model = "Bivariate", dataset = NULL,
   dTt = 5e-05
   range_t = seq(min_t + dTt/2, max_t - dTt/2, dTt)
   if (model == "Bivariate") {
-    Mean_C.Sample = mcmcChain[, "Mean_Sp"]
-    Mean_S.Sample = mcmcChain[, "Mean_Se"]
+    Summary_C.Sample = mcmcChain[, "Summary_Sp"]
+    Summary_S.Sample = mcmcChain[, "Summary_Se"]
     tau_S.Sample = mcmcChain[, "tau[1]"]
     tau_C.Sample = mcmcChain[, "tau[2]"]
     rho.Sample = mcmcChain[, "rho"]
@@ -162,8 +162,8 @@ SROC_rjags <-function (X, n, model = "Bivariate", dataset = NULL,
   if(summary.point==TRUE) {
 
 	if(model=="Bivariate") {
-		Ov_S = median(Mean_S.Sample)
-		Ov_C = median(Mean_C.Sample)
+		Ov_S = median(Summary_S.Sample)
+		Ov_C = median(Summary_C.Sample)
 		points((Ov_C), Ov_S, pch = pch.summary.point, cex = cex.summary.point, col = col.summary.point)
 	}
 	else{

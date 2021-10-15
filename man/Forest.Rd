@@ -5,7 +5,11 @@
 \description{Function to create adjacent forest plots for both sensitivity and specificity also displaying study labels and 2x2 tables}
 \usage{
 Forest(Data, study = NULL, level = 0.95, conf.int = "Wilson",
-se.axis = NULL, sp.axis = NULL, save_plot = NULL, res = 90, mean = NULL, digits = 2)
+se.axis = NULL, sp.axis = NULL, save_plot = NULL, res = 90,
+summary = NULL, digits = 2, summary_label = NULL,
+study.cex=1, summary.cex=1.1,
+col.headers = c("Study", "TP", "FP", "FN", "TN", "Sens (95\% CI)",
+"Spec (95\% CI)", "Sens (95\% CI)", "Spec (95\% CI)"))
 }
 
 \arguments{
@@ -21,15 +25,19 @@ se.axis = NULL, sp.axis = NULL, save_plot = NULL, res = 90, mean = NULL, digits 
 	second component should be  the maximum of the desired x-axis range.  If NULL (default), the range is calculated from the Data (min,max) of specificity.}
   \item{save_plot}{character string pointing to the directory where the plot will be saved in .jpeg format.  If NULL, no plot will be saved.}
   \item{res}{esolution (dpi) of the jpeg file.}
-  \item{mean}{Default is NULL.  If data provided, it should be in the form of a vector with the following six entries with results of the meta-analysis, namely, mean sensitivity/specificity with respective credible/confidence intervals (order matters) :
-					1- mean sensitivity (point estimate). \cr
-					2- mean sensitivity lower bound. \cr
-					3- mean sensitivity upper bound. \cr
-					4- mean specificity (point estimate). \cr
-					5- mean specificity lower bound. \cr
-					6- mean specificity upper bound. \cr}
+  \item{summary}{Default is NULL.  This will add summary point estimates that were calculated externaly.  Multiple summary points can be provided.  If provided, summary should be in the form of a matrix with with each row representing one summary point made of 6 columns.  The columns should be (order matters) :
+					1- summary point estimate for individuals truly positive (i.e. sensitivity). \cr
+					2- lower bound of the 95\% CI for corresponding summary point estimate. \cr
+					3- upper bound of the 95\% CI for corresponding summary point estimate. \cr
+					4- summary point estimate for individuals truly negative (i.e. specificity). \cr
+					5- lower bound of the 95\% CI for corresponding summary point estimate. \cr
+					6- upper bound of the 95\% CI for corresponding summary point estimate. \cr}
 
   \item{digits}{number of decimal places to display for sensitivity/specificity point estimates and respective interval limits.  Default = 2.}
+  \item{summary_label}{To provide names to the summary point estimates provided by summary argument.  Default is NULL}
+  \item{study.cex}{Change font size of study labels provided by argument study}
+  \item{summary.cex}{Change font size of summary labels provided by argument summary_label}
+  \item{col.headers}{To change the headers of the forest plot sections.}
 }
 
 \value{No return value}
@@ -50,18 +58,32 @@ Forest(Anti_CCP, se.axis = c(0,1), sp.axis = c(0,1)	)
 # PROVIDE STUDY LABELS
 Forest(Anti_CCP, study=Anti_CCP$Study)
 
-# To display the summary mean sensitivity and mean specificity estimates previously obtained
+# To display the sensitivity and specificity summary point estimates previously obtained
 # from a Bayesian bivariate meta-analysis model.
 data(posterior_samples_Bivariate)
-Mean_Se = median(posterior_samples_Bivariate[,1])
-Mean_Se_low = quantile(posterior_samples_Bivariate[,1], prob=0.025)
-Mean_Se_up = quantile(posterior_samples_Bivariate[,1], prob=0.975)
-Mean_Sp = median(posterior_samples_Bivariate[,2])
-Mean_Sp_low = quantile(posterior_samples_Bivariate[,2], prob=0.025)
-Mean_Sp_up = quantile(posterior_samples_Bivariate[,2], prob=0.975)
+Summary_Se = median(posterior_samples_Bivariate[,1])
+Summary_Se_low = quantile(posterior_samples_Bivariate[,1], prob=0.025)
+Summary_Se_up = quantile(posterior_samples_Bivariate[,1], prob=0.975)
+Summary_Sp = median(posterior_samples_Bivariate[,2])
+Summary_Sp_low = quantile(posterior_samples_Bivariate[,2], prob=0.025)
+Summary_Sp_up = quantile(posterior_samples_Bivariate[,2], prob=0.975)
 
-Forest(Anti_CCP, study=Anti_CCP$Study, mean = c(Mean_Se, Mean_Se_low, Mean_Se_up,
-      Mean_Sp, Mean_Sp_low, Mean_Sp_up))
+Forest(Anti_CCP, study=Anti_CCP$Study, summary = cbind(Summary_Se, Summary_Se_low, Summary_Se_up,
+      Summary_Sp, Summary_Sp_low, Summary_Sp_up))
+
+# Random summary point estimates generated for illustrative example
+n = 5 # Simulate summary point estimates coming from 5 different models
+Summary_Se = runif(n, 0.5,0.6)
+Summary_Se_low = runif(n, 0.4, 0.5)
+Summary_Se_up = runif(n, 0.6,0.7)
+Summary_Sp =runif(n, 0.9,0.95)
+Summary_Sp_low = runif(n, 0.85,0.9)
+Summary_Sp_up = runif(n, 0.95,1)
+
+Forest(Anti_CCP, study=Anti_CCP$Study, summary = cbind(Summary_Se, Summary_Se_low, Summary_Se_up,
+      Summary_Sp, Summary_Sp_low, Summary_Sp_up), summary_label=c("Summary estimate 1",
+      "Summary estimate 2", "Summary estimate 3", "Summary estimate 4", "Summary estimate 5"))
+
 }
 
 \keyword{ Forest }

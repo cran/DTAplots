@@ -69,8 +69,8 @@ col.summary.point = 1)
 	\dQuote{rho} for the correlation between the logit-transformed sensitivity and the mean logit-transformed specificity. \cr
 	\dQuote{se} for the logit-transformed sensitivity in individual studies. \cr
 	\dQuote{sp} for the logit-transformed specificity in individual studies. \cr
-	\dQuote{Mean_Se} for the mean sensitivity. \cr
-	\dQuote{Mean_Sp} for the mean specificity. \cr
+	\dQuote{Summary_Se} for the sensitivity summary estimate. \cr
+	\dQuote{Summary_Sp} for the specificity summary estimate. \cr
 
 If model is set to \code{HSROC}, the function expects that the parameters of the HSROC model have been spelled exactly as follows in the jags model  :
 

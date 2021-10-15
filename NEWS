@@ -1,5 +1,19 @@
 		#===================================================
 		#
+		#		2021-10-15 (Version 1.02.5 published)
+		#
+		#===================================================
+--- Replaced "Mean_Se" and "Mean_Sp" by "Summary_Se" and "Summary_Sp" in the SROC_rjags function
+    to keep notation aligned with the upcoming COchrane DTA handbook.
+--- Added new features to the Forest function:
+     - summary argument (formerly mean) now supports multiple summary point estimates coming from different models.
+     - summary_label argument allows to name the summary point estimates.
+     - Argument "col.headers" added in order to change the headers of the forest plot columns.
+     - study.cex argument now allows control over the study label font size.
+     - summary.cex argument manages the fontsize of summary_label.
+
+		#===================================================
+		#
 		#		2021-03-11 (Version 1.02.4 published)
 		#
 		#===================================================
